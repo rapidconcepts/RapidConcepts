@@ -375,6 +375,23 @@
     
     
     <script>
+
+        function setModeByTime() {
+            const body = document.body;
+            const modeToggle = document.querySelector('.mode-toggle');
+            const currentTime = new Date().getHours();
+    
+            // Auto-switch based on time (dark mode from 6 PM to 6 AM)
+            if (currentTime >= 18 || currentTime < 6) {
+                body.classList.add('dark-mode');
+                modeToggle.innerHTML = '<i class="fas fa-sun"></i>';  // Light mode icon
+            } else {
+                body.classList.remove('dark-mode');
+                modeToggle.innerHTML = '<i class="fas fa-moon"></i>';  // Dark mode icon
+            }
+        }
+
+        
         function toggleMode() {
             const body = document.body;
             const modeToggle = document.querySelector('.mode-toggle');

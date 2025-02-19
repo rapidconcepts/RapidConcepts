@@ -1,0 +1,16 @@
+{
+    "concepts": {
+        "what-is-computer": {
+            "title": "What is a Computer?",
+            "video": "https://www.youtube.com/embed/ii32UUR2qgA",
+            "image": "computer-image.jpg",
+            "content": "<p>A computer is an electronic device that processes data...</p>"
+        },
+        "what-is-light": {
+            "title": "What is Light?",
+            "video": "https://www.youtube.com/embed/z8ZJOjax-zc",
+            "image": "light-image.jpg",
+            "content": "<p>Light is a form of electromagnetic radiation...</p>"
+        }
+    }
+}

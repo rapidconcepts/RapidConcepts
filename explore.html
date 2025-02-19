@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rapid Concepts - Fundamental concepts, simplified in minutes. Learn fundamental topics in short, easy-to-understand videos.">
+    <title>Explore-Content | Rapid Concepts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        header {
+            background-color: white;
+            color: black;
+            padding: 0px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 80px;
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .logo h1 {
+            margin: 0 0 0 15px;
+            font-size: 1.8rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+            margin-top: 10px;
+        }
+        nav a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 2px 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        nav a:hover{
+            color: #526ff3;
+            font-weight: bold;
+        }
+
+        section:target {
+            scroll-margin-top: 80px;
+        }
+
+
+        .contact {
+            background-color: #f4f4f4;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px 0px;
+        }
+        body.dark-mode .contact {
+            background-color: #222;
+            color: #fff;
+        }
+        .contact .container {
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .social-media a {
+            font-size: 1.8rem;
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #526ff3;
+        }
+        
+        .subscribe-container {
+            margin-top: 30px;
+        }
+
+        .subscribe-btn {
+            padding: 10px 30px;
+            background-color: #000;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #111;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            nav ul li:not(:last-child) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <style>
+        .wikipedia {
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            margin: 40px auto;
+            gap: 20px; /* Adds spacing between left and right sections */
+        }
+
+        .wikipedia .left-wiki {
+            width: 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adds spacing between input elements */
+        }
+
+        .wikipedia .left-wiki label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .wikipedia .left-wiki input{
+            width: 100%;
+            outline: none;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            height: 45px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .wikipedia .left-wiki input:focus{
+            border-color: #526ff3;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+        .wikipedia .left-wiki select {
+            width: 100%;
+            outline: none;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            height: 45px;
+            padding: 10px 14px;
+            padding-right: 40px; /* Extra padding to prevent text overlap with custom arrow */
+            border-radius: 8px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            appearance: none; /* Hides default dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23444444'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); 
+            background-repeat: no-repeat;
+            background-position: right 14px center; /* Positioning the custom arrow */
+            background-size: 18px;
+        }
+
+        .wikipedia .left-wiki select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+
+        .wikipedia .right-wiki {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/home/yasarapu/Documents/YOUTUBE/website/logo.jpg" alt="Rapid Concepts Logo">
+                <h1>Rapid Concepts</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/home/yasarapu/Documents/YOUTUBE/website/index.html">Home</a></li>
+                    <li><a href="/home/yasarapu/Documents/YOUTUBE/website/index.html#about">About</a></li>
+                    <li><a href="/home/yasarapu/Documents/YOUTUBE/website/media.html">Videos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <button onclick="loadConcept('what-is-light')">What is Light?</button>
+
+
+    <div class="wikipedia">
+        <div class="left-wiki">
+            <label for="search-content">Search Videos</label>
+            <input id="search-content" type="search" placeholder="Search Content">
+            <select>
+                <option value="">Select Playlist</option>
+                <option value="">Technology</option>
+                <option value="">mathematics</option>
+                <option value="">Physics</option>
+                <option value="">Chemistry</option>
+                <option value="">Global Organizations</option>
+                <option value="">Computer Sicence</option>
+                <option value="">Economics</option>
+                <option value="">Biology</option>
+                <option value="">Astronomy</option>
+                <option value="">Music</option>
+            </select>
+        </div>
+        <section id="right-wiki" class="right-wiki">
+            <div class="container">
+                <h2 id="concept-title">Concept Title</h2>
+                <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
+                <img id="concept-image" src="" alt="Concept Image" style="width: 100%; margin-top: 20px;">
+                <div id="concept-content"></div>
+            </div>
+        </section>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Address:</strong> 1-7, Learning Street, Knowledge City, EduLand, 1729</p>
+                <p><strong>Phone:</strong> +91 6304667303</p>
+                <p><strong>Email:</strong> rapidconcepts07@gmail.com</p>
+            </div>
+
+            <div class="subscribe-container">
+                <button class="subscribe-btn" onclick="subscribeToYouTube()">Subscribe to YouTube</button>
+            </div>
+
+            <div class="social-media">
+                <a href="https://www.youtube.com/@rapidconcepts" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/rapidconcepts07" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/rapidconcepts07" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/rapidconcepts07" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rapid Concepts | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+    async function loadConcept(conceptKey) {
+        try {
+            const response = await fetch("https://rapidconcepts.github.io/RapidConcepts/concepts.json"); // Replace with your actual URL
+            if (!response.ok) throw new Error("Failed to fetch JSON");
+    
+            const data = await response.json();
+            const concept = data.concepts[conceptKey];
+    
+            if (concept) {
+                document.getElementById("concept-title").innerText = concept.title;
+                document.getElementById("concept-video").src = concept.video;
+                document.getElementById("concept-image").src = concept.image;
+                document.getElementById("concept-content").innerHTML = concept.content;
+            } else {
+                document.getElementById("concept-content").innerHTML = "<p>Concept not found.</p>";
+            }
+        } catch (error) {
+            console.error("Error loading concept:", error);
+            document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
+        }
+    }
+</script>
+    
+</body>
+</html>

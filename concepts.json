@@ -1,16 +1,28 @@
 {
     "concepts": {
-        "What is a computer?": {
+        "What is a Computer?": {
             "title": "What is a Computer?",
-            "video": "https://www.youtube.com/embed/ii32UUR2qgA",
-            "image": "computer-image.jpg",
-            "content": "<p>A computer is an electronic device that processes data...</p>"
-        },
-        "What is Light?": {
-            "title": "What is Light?",
-            "video": "https://www.youtube.com/embed/z8ZJOjax-zc",
-            "image": "light-image.jpg",
-            "content": "<p>Light is a form of electromagnetic radiation...</p>"
+            "images": [
+                { "src": "computer-1.jpg", "alt": "Computer Diagram", "position": "intro" },
+                { "src": "computer-2.jpg", "alt": "Inside a Computer", "position": "hardware" }
+            ],
+            "content": [
+                {
+                    "heading": "Introduction",
+                    "text": "A computer is an electronic device that processes data...",
+                    "image": "intro"
+                },
+                {
+                    "heading": "Computer Hardware",
+                    "text": "The computer consists of various hardware components such as the CPU, RAM, and storage...",
+                    "image": "hardware"
+                },
+                {
+                    "heading": "Applications of Computers",
+                    "text": "Computers are used in various fields such as education, healthcare, and finance."
+                }
+            ],
+            "video": "https://www.youtube.com/embed/ii32UUR2qgA"
         }
     }
 }

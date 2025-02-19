@@ -274,26 +274,28 @@
         </div>
     </header>
 
-    <div class="left-wiki">
-        <label for="search-content">Search Videos</label>
-        <input id="search-content" type="search" placeholder="Search Content" oninput="searchVideos()">
-        <div id="search-results"></div>
+    <div class = "wikipedia">
+        <div class="left-wiki">
+            <label for="search-content">Search Videos</label>
+            <input id="search-content" type="search" placeholder="Search Content" oninput="searchVideos()">
+            <div id="search-results"></div>
+    
+            <label for="playlist-select">Select Playlist</label>
+            <select id="playlist-select" onchange="loadVideos(this.value)">
+                <option value="">Loading playlists...</option>
+            </select>
+    
+            <div id="video-list"></div>
+        </div>
 
-        <label for="playlist-select">Select Playlist</label>
-        <select id="playlist-select" onchange="loadVideos(this.value)">
-            <option value="">Loading playlists...</option>
-        </select>
-
-        <div id="video-list"></div>
+        <section id="right-wiki" class="right-wiki">
+            <h2 id="concept-title">Concept Title</h2>
+            <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
+            <img id="concept-image" src="" alt="Concept Image" style="width: 100%; margin-top: 20px;">
+            <div id="concept-content"></div>
+        </section>
     </div>
-
-    <section id="right-wiki" class="right-wiki">
-        <h2 id="concept-title">Concept Title</h2>
-        <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
-        <img id="concept-image" src="" alt="Concept Image" style="width: 100%; margin-top: 20px;">
-        <div id="concept-content"></div>
-    </section>
-</div>
+        
 
     <section id="contact" class="contact">
         <div class="container">

@@ -1,7 +1,7 @@
 {
     "concepts": {
         "What is a Computer?": {
-            "title": "What is a Computer?",
+            "title": "What is a computer?",
             "images": [
                 { "src": "computer-1.jpg", "alt": "Computer Diagram", "position": "intro" },
                 { "src": "computer-2.jpg", "alt": "Inside a Computer", "position": "hardware" }

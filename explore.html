@@ -155,15 +155,44 @@
 
     <style>
         #video-list button, #search-results div {
-            cursor: pointer; 
-            padding: 10px; 
-            margin: 2px; 
-            background: #f1f1f1; 
-            border: 1px solid #ddd; 
-        }
-        #video-list button:hover, #search-results div:hover {
-            background: #ddd; 
-        }
+    cursor: pointer;
+    padding: 12px 16px;
+    margin: 5px 0;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+#video-list button:hover, #search-results div:hover {
+    background: #f8f9fa;
+    border-color: #526ff3;
+    color: #526ff3;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Active Click Effect */
+#video-list button:active, #search-results div:active {
+    transform: scale(0.98);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #video-list button, #search-results div {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+    </style>
 
     <style>
         @media (max-width: 768px) {

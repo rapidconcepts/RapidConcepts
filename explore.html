@@ -425,22 +425,15 @@
             const concept = data.concepts[conceptKey];
 
             if (concept) {
-                const conceptContainer = document.getElementById("concept-content");
-                const titleElement = document.getElementById("concept-title");
-                const videoElement = document.getElementById("concept-video");
+                document.getElementById("concept-title").innerText = concept.title;
+                document.getElementById("concept-content").innerHTML = "";
 
-                titleElement.innerText = concept.title;
-                conceptContainer.innerHTML = ""; // Clear previous content
-
-                // Loop through content sections and add them dynamically
+                // Add structured content
                 concept.content.forEach(section => {
                     let sectionElement = document.createElement("div");
-                    sectionElement.innerHTML = `
-                        <h3>${section.heading}</h3>
-                        <p>${section.text}</p>
-                    `;
+                    sectionElement.innerHTML = `<h3>${section.heading}</h3><p>${section.text}</p>`;
 
-                    // Insert image if it exists in this section
+                    // Insert image if it exists
                     const image = concept.images.find(img => img.position === section.image);
                     if (image) {
                         let imgElement = document.createElement("img");
@@ -450,11 +443,15 @@
                         sectionElement.appendChild(imgElement);
                     }
 
-                    conceptContainer.appendChild(sectionElement);
+                    document.getElementById("concept-content").appendChild(sectionElement);
                 });
 
-                // Add the video at the end
-                videoElement.src = concept.video;
+                // **Set the video at the bottom**
+                if (concept.video.includes("youtube.com/embed/")) {
+                    document.getElementById("concept-video").src = concept.video;
+                } else {
+                    console.error("Invalid YouTube embed URL:", concept.video);
+                }
             } else {
                 document.getElementById("concept-content").innerHTML = "<p>Concept not found.</p>";
             }

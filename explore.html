@@ -154,6 +154,10 @@
     </style>
 
     <style>
+        #video-list button, #search-results div { cursor: pointer; padding: 5px; margin: 2px 0; background: #f1f1f1; border: 1px solid #ddd; }
+        #video-list button:hover, #search-results div:hover { background: #ddd; }
+
+    <style>
         @media (max-width: 768px) {
             nav ul li:not(:last-child) {
                 display: none;
@@ -270,33 +274,26 @@
         </div>
     </header>
 
-    <div class="wikipedia">
-        <div class="left-wiki">
-            <label for="search-content">Search Videos</label>
-            <input id="search-content" type="search" placeholder="Search Content">
-            <select>
-                <option value="">Select Playlist</option>
-                <option value="">Technology</option>
-                <option value="">mathematics</option>
-                <option value="">Physics</option>
-                <option value="">Chemistry</option>
-                <option value="">Global Organizations</option>
-                <option value="">Computer Sicence</option>
-                <option value="">Economics</option>
-                <option value="">Biology</option>
-                <option value="">Astronomy</option>
-                <option value="">Music</option>
-            </select>
-        </div>
-        <section id="right-wiki" class="right-wiki">
-            <div class="container">
-                <h2 id="concept-title">Concept Title</h2>
-                <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
-                <img id="concept-image" src="" alt="Concept Image" style="width: 100%; margin-top: 20px;">
-                <div id="concept-content"></div>
-            </div>
-        </section>
+    <div class="left-wiki">
+        <label for="search-content">Search Videos</label>
+        <input id="search-content" type="search" placeholder="Search Content" oninput="searchVideos()">
+        <div id="search-results"></div>
+
+        <label for="playlist-select">Select Playlist</label>
+        <select id="playlist-select" onchange="loadVideos(this.value)">
+            <option value="">Loading playlists...</option>
+        </select>
+
+        <div id="video-list"></div>
     </div>
+
+    <section id="right-wiki" class="right-wiki">
+        <h2 id="concept-title">Concept Title</h2>
+        <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
+        <img id="concept-image" src="" alt="Concept Image" style="width: 100%; margin-top: 20px;">
+        <div id="concept-content"></div>
+    </section>
+</div>
 
     <section id="contact" class="contact">
         <div class="container">
@@ -328,28 +325,100 @@
     </footer>
 
     <script>
-    async function loadConcept(conceptKey) {
-        try {
-            const response = await fetch("https://rapidconcepts.github.io/RapidConcepts/concepts.json"); // Replace with your actual URL
-            if (!response.ok) throw new Error("Failed to fetch JSON");
-    
-            const data = await response.json();
-            const concept = data.concepts[conceptKey];
-    
-            if (concept) {
-                document.getElementById("concept-title").innerText = concept.title;
-                document.getElementById("concept-video").src = concept.video;
-                document.getElementById("concept-image").src = concept.image;
-                document.getElementById("concept-content").innerHTML = concept.content;
-            } else {
-                document.getElementById("concept-content").innerHTML = "<p>Concept not found.</p>";
+        const API_KEY = "YOUR_YOUTUBE_API_KEY"; // Replace with your YouTube API Key
+        const CHANNEL_ID = "YOUR_CHANNEL_ID"; // Replace with your YouTube Channel ID
+        let allVideos = []; // Stores all videos for search functionality
+
+        // 1️⃣ Fetch and display playlists dynamically
+        async function loadPlaylists() {
+            const playlistDropdown = document.getElementById("playlist-select");
+
+            try {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${CHANNEL_ID}&maxResults=20&key=${API_KEY}`);
+                const data = await response.json();
+
+                playlistDropdown.innerHTML = `<option value="">Select Playlist</option>`;
+                data.items.forEach(playlist => {
+                    const option = document.createElement("option");
+                    option.value = playlist.id;
+                    option.textContent = playlist.snippet.title;
+                    playlistDropdown.appendChild(option);
+                });
+
+            } catch (error) {
+                console.error("Error fetching playlists:", error);
             }
-        } catch (error) {
-            console.error("Error loading concept:", error);
-            document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
         }
-    }
-</script>
+
+        // 2️⃣ Load videos when a playlist is selected
+        async function loadVideos(playlistId) {
+            const videoList = document.getElementById("video-list");
+            videoList.innerHTML = "";
+
+            if (!playlistId) return;
+
+            try {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=20&key=${API_KEY}`);
+                const data = await response.json();
+
+                allVideos = data.items.map(item => ({
+                    title: item.snippet.title,
+                    videoId: item.snippet.resourceId.videoId
+                }));
+
+                data.items.forEach(video => {
+                    const button = document.createElement("button");
+                    button.textContent = video.snippet.title;
+                    button.onclick = () => loadConcept(video.snippet.title);
+                    videoList.appendChild(button);
+                });
+
+            } catch (error) {
+                console.error("Error fetching videos:", error);
+            }
+        }
+
+        // 3️⃣ Load concept details from JSON when a video is selected
+        async function loadConcept(videoTitle) {
+            try {
+                const response = await fetch("https://yourusername.github.io/repository-name/concepts.json"); // Replace with your actual URL
+                const data = await response.json();
+                const concept = data.concepts[videoTitle];
+
+                if (concept) {
+                    document.getElementById("concept-title").innerText = concept.title;
+                    document.getElementById("concept-video").src = concept.video;
+                    document.getElementById("concept-image").src = concept.image;
+                    document.getElementById("concept-content").innerHTML = concept.content;
+                } else {
+                    document.getElementById("concept-content").innerHTML = "<p>Concept not found.</p>";
+                }
+            } catch (error) {
+                console.error("Error loading concept:", error);
+                document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
+            }
+        }
+
+        // 4️⃣ Implement search suggestions
+        function searchVideos() {
+            const searchInput = document.getElementById("search-content").value.toLowerCase();
+            const searchResults = document.getElementById("search-results");
+            searchResults.innerHTML = "";
+
+            if (searchInput.length === 0) return;
+
+            const matches = allVideos.filter(video => video.title.toLowerCase().includes(searchInput));
+            matches.forEach(match => {
+                const div = document.createElement("div");
+                div.textContent = match.title;
+                div.onclick = () => loadConcept(match.title);
+                searchResults.appendChild(div);
+            });
+        }
+
+        // Load playlists on page load
+        document.addEventListener("DOMContentLoaded", loadPlaylists);
+    </script>
     
 </body>
 </html>

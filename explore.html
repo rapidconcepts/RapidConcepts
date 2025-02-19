@@ -381,7 +381,7 @@
         // 3️⃣ Load concept details from JSON when a video is selected
         async function loadConcept(videoTitle) {
             try {
-                const response = await fetch("concepts.json"); // Replace with your actual URL
+                const response = await fetch("https://rapidconcepts.github.io/RapidConcepts/concepts.json"); // Replace with your actual URL
                 const data = await response.json();
                 const concept = data.concepts[videoTitle];
 

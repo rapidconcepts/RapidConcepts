@@ -328,9 +328,6 @@
                     <li><a href="#shorts">Shorts</a></li>
                     <li><a href="#playlists">Playlists</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><abbr title="mode-toggle"><button class="mode-toggle" onclick="toggleMode()">
-                        <i class="fas fa-moon"></i>
-                    </button></abbr></li>
                 </ul>
             </nav>
         </div>
@@ -585,19 +582,6 @@
                 homeLink.classList.add('active');
             }
         });
-    </script>
-
-    <script>
-        function toggleMode() {
-            const body = document.body;
-            const modeToggle = document.querySelector('.mode-toggle');
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                modeToggle.innerHTML = '<i class="fas fa-sun"></i>';  // Light mode icon
-            } else {
-                modeToggle.innerHTML = '<i class="fas fa-moon"></i>';  // Dark mode icon
-            }
-        }
     </script>
 
     <script>

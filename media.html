@@ -273,36 +273,43 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Grid layout for videos */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        /* Video container using flexbox */
+        .video-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
+            padding: 20px;
         }
         .video-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 320px;
         }
-        .video-item iframe {
+        .video-item video {
             width: 320px;
             height: 180px;
             border-radius: 10px;
+            background: #000;
         }
         
-        /* Playlist button styling */
+        /* Playlist container */
+        .playlist-container {
+            display: block;
+            margin: 10px;
+        }
         .playlist-button {
             padding: 10px 15px;
-            color: black;
-            background: #eee;
-            border: none;
             margin: 5px;
+            background-color: #ddd;
+            border: none;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 5px;
             transition: background 0.3s;
         }
         .playlist-button:hover {
-            background-color: #ccc;
+            background-color: #bbb;
         }
         .playlist-button.selected {
             background-color: #526ff3;
@@ -422,26 +429,29 @@
             window.open('https://www.youtube.com/@rapidconcepts', '_blank');
         }
     </script>
-
-    <script>
-        function showLoading(message) {
-            document.getElementById("content").innerHTML = `
-                <div class="loading-container">
-                    <div class="spinner"></div>
-                    <h2>${message}</h2>
-                </div>`;
-        }
-    </script>
-
     
 
     <script>
+
+    function showLoading(message) {
+        document.getElementById("content").innerHTML = `
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <h2>${message}</h2>
+            </div>`;
+    }
+
+    function hidePlaylists() {
+        document.getElementById("playlist-container").style.display = "none";
+    }
+        
+        
     const API_KEY = "AIzaSyAIPqka0-CZUoXD7QHjuKg5COYw-mwQ57o";
     const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
 
     async function fetchVideos(pageToken = "") {
-        showLoading("Loading Videoss...");
-        document.getElementById("content").innerHTML = "<h2>Loading Videos...</h2>";
+        hidePlaylists();
+        showLoading("Loading Videos...");
 
         try {
             let videos = [];
@@ -463,8 +473,8 @@
     }
 
     async function fetchShorts() {
+        hidePlaylists();
         showLoading("Loading Shorts...");
-        document.getElementById("content").innerHTML = "<h2>Loading Shorts...</h2>";
 
         try {
             let videos = [];
@@ -489,6 +499,7 @@
 // Fetching playlists
 async function fetchPlaylists() {
     showLoading("Loading Playlists...");
+    document.getElementById("playlist-container").style.display = "block";
 
     try {
         let playlists = [];
@@ -541,13 +552,16 @@ async function fetchPlaylistVideos(playlistId, playlistTitle = "") {
 
 // Function to display videos
 function displayVideos(videos, title = "Videos") {
-    let html = `<h2>${title}</h2><div class="video-grid">`;
+    let html = `<h2>${title}</h2><div class="video-flex-container">`;
     videos.forEach(video => {
         let videoId = video.id.videoId || video.snippet.resourceId?.videoId;
         if (videoId) {
             html += `
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    <video controls>
+                        <source src="https://www.youtube.com/embed/${videoId}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <p>${video.snippet.title}</p>
                 </div>
             `;

@@ -380,6 +380,7 @@
     const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
 
     async function fetchVideos(pageToken = "") {
+        document.getElementById("playlist-container").innerHTML = "";
         document.getElementById("content").innerHTML = "<h2>Loading Videos...</h2>";
 
         try {
@@ -402,6 +403,7 @@
     }
 
     async function fetchShorts() {
+        document.getElementById("playlist-container").innerHTML = "";
         document.getElementById("content").innerHTML = "<h2>Loading Shorts...</h2>";
 
         try {

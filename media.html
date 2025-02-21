@@ -545,20 +545,26 @@ async function fetchPlaylistVideos(playlistId, playlistTitle = "") {
 
 function displayVideos(videos, title = "Videos") {
     let html = `<h2>${title}</h2><div class="video-grid">`;
+    
     videos.forEach(video => {
         let videoId = video.id.videoId || video.snippet.resourceId?.videoId;
         if (videoId) {
             html += `
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/${videoId}?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe>
+                    </div>
                     <p>${video.snippet.title}</p>
+                    <button class="read-button">Read</button>
                 </div>
             `;
         }
     });
+
     html += '</div>';
     document.getElementById("content").innerHTML = html;
 }
+
 
 function displayPlaylists(playlists) {
     let playlistHtml = '<div class="playlist-container">';

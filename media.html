@@ -199,25 +199,33 @@
         }
         .menu {
             width: 250px;
-            background: #f9f9f9;
+            background: #ffffff; /* Clean white background */
             padding: 20px;
-            color: white;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            border-right: 2px solid #ddd; /* Light gray border for subtle separation */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
         }
+        
         .menu button {
-            background: #fff;
-            border: none;
-            padding: 10px;
-            color: white;
-            cursor: pointer;
+            background: #f8f8f8; /* Light grayish button background */
+            border: 1px solid #ddd; /* Soft border */
+            padding: 12px;
+            color: #333; /* Dark text for contrast */
             font-size: 16px;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            font-weight: bold;
+            text-align: left;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
         }
+        
         .menu button:hover {
-            background: #f1f1f1;
+            background: #f1f1f1; /* Slightly darker gray on hover */
+            transform: scale(1.03); /* Subtle zoom effect */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15); /* More depth on hover */
         }
         .content {
             flex: 1;
@@ -241,7 +249,7 @@
             margin-bottom: 20px;
         }
         .playlist-button {
-            background: #ff4081;
+            background: #526ff3;
             border: none;
             padding: 10px 15px;
             color: white;
@@ -251,7 +259,7 @@
             transition: background 0.3s ease;
         }
         .playlist-button:hover {
-            background: #d81b60;
+            background:  #4052c8;
         }
     </style>
 

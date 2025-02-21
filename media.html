@@ -437,12 +437,12 @@
 
     <script>
         function showLoading(message) {
-    document.getElementById("content").innerHTML = `
-        <div class="loading-container">
-            <div class="spinner"></div>
-            <h2>${message}</h2>
-        </div>`;
-}
+            document.getElementById("content").innerHTML = `
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <h2>${message}</h2>
+                </div>`;
+        }
     </script>
 
     
@@ -452,6 +452,7 @@
     const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
 
     async function fetchVideos(pageToken = "") {
+        showLoading("Loading Videoss...");
         document.getElementById("content").innerHTML = "<h2>Loading Videos...</h2>";
 
         try {
@@ -474,6 +475,7 @@
     }
 
     async function fetchShorts() {
+        showLoading("Loading Shorts...");
         document.getElementById("content").innerHTML = "<h2>Loading Shorts...</h2>";
 
         try {

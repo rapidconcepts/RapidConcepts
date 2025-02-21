@@ -16,7 +16,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        .container {
+        .container-head{
             width: 90%;
             margin: 0 auto;
             max-width: 1200px;
@@ -33,7 +33,7 @@
             transition: box-shadow 0.3s ease-in-out;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        header .container {
+        header .container-head{
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -203,7 +203,7 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container-head">
             <div class="logo">
                 <img src="logo.jpg" alt="Rapid Concepts Logo">
                 <h1>Rapid Concepts</h1>
@@ -216,191 +216,6 @@
             </nav>
         </div>
     </header>
-
-
-    <section id="videos" class="videos">
-        <i style="position: relative;bottom: 20px;"><abbr title="Home page" style="text-decoration: none;"><a href="index.html" style="color: #d48608;">Home</a></abbr> / Media</i><br>
-        <div class="container">
-            <h1>Videos</h1>
-            <div class="video-carousel">
-                <button class="scroll-left" onclick="ScrollLeft('videos')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="video-wrapper"> 
-                    <div class="video-slider">
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/6HBtgrh9rYg?si=ciaMTdNQ9yYu5GyI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is Photosynthesis?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ii32UUR2qgA?si=pEpeuNaFdN2O6daF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is Light?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/AaBJKms4Bns?si=z0Ie9phxk_MoYs-h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is Bitcoin?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/z8ZJOjax-zc?si=f34DM7Bp5Hdv6p2S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is Gravity?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/XB2z7wncyeo?si=75glNV-s-mPp29vT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is PI?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RL2fQ6vNJow?si=h5vpRN1lp2X8l5Mn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is a Database?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/3u4jP8qXbys?si=nMBgxUP_vpOlcSfm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is Music?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/PT2Gb7FgNXs?si=fVpzX6E4mgXmgdXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is a Blackhole?</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RJi2-QtAqTM?si=jonk2xDIly4GqyCL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>What is a Computer?</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="scroll-right" onclick="scrollRight('videos')">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <a href="https://www.youtube.com/@rapidconcepts/videos" class="btn" target="_blank">More videos</a>
-        </div>
-    </section>
-
-
-    <section id="shorts" class="shorts">
-        <div class="container">
-            <h1 style="text-align: center;">Shorts</h1>
-            <div class="video-carousel">
-                <button class="scroll-left" onclick="ScrollLeft('shorts')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="video-wrapper">
-                    <div class="video-slider">
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/Hx2CaHQWtis?si=O2iQ3zrt7l7rnksO" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/6u0jogfCaN4?si=jQutA_F9tc_tDId_" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/BqP2pQhyPwY?si=rDGiWp8BCZ8Crql-" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/gnxgOcK9Vk0?si=nyibs5Lnx_t4JFp_" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/XCZ8HJaGROs?si=pKtlVlwU_BivdVb3" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/EEG-U49f980?si=noxh__bTPkXBZWxM" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/No6iEnZHXcw?si=BYksWuLs4ZXDxz90" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                        <div style="text-align: center;padding: 0px 7px;">
-                            <iframe width="315" height="560" style="border-radius: 10px;"
-                            src="https://youtube.com/embed/zKrhvQW3jh8?si=Ec75xqRu-WbR3Ivj" 
-                            title="YouTube Shorts" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-                <button class="scroll-right" onclick="scrollRight('shorts')">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <a href="https://www.youtube.com/@rapidconcepts/shorts" class="btn more-shorts-btn" target="_blank" style="display: block; width: 200px; margin: 20px auto; text-align: center; padding: 10px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-size: 1rem;">
-                More shorts
-            </a> 
-        </div>
-    </section>
-
-
-    <section id="playlists" class="playlists" style="margin-top: 100px;">
-        <div class="container">
-            <h1 style="text-align: center;">Playlists</h1>
-            <div class="video-carousel">
-                <button class="scroll-left" onclick="ScrollLeft('playlists')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="video-wrapper">
-                    <div class="video-slider">
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bE8SD9z5gbYKNNYd&amp;list=PLT_C1BDhmaaY4_PQ82nE3ypmybNGYOkFW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Biology</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=6mdOFQGfYUQZa2aQ&amp;list=PLT_C1BDhmaaZxD221YiRD_X41hZ538sKm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Physics</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=s8kWGwJvDZS6RbG1&amp;list=PLT_C1BDhmaaZQymMIq6pw7W_aEUz-1riY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Mathematics</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=74Oqin9nCdk1-8W0&amp;list=PLT_C1BDhmaabKaD_zhjTKHW1iwPYlpfsZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Computer science</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n93njE2JDhAfNPzj&amp;list=PLT_C1BDhmaaaYQUQfQxTNSqqCsGamwsmj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Music</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=Ul5KODRo8prgh4hV&amp;list=PLT_C1BDhmaaaJa1Uf7OqScvov_af2IIvS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Astronomy</p>
-                        </div>
-                        <div class="video-item">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=P4Q1dGw5WGwFhzDT&amp;list=PLT_C1BDhmaaaUibjs9JR9IpzM78fwkB3D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <p>Technology</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="scroll-right" onclick="scrollRight('playlists')">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <a href="https://www.youtube.com/@rapidconcepts/playlists" class="btn more-playlists-btn" target="_blank" style="display: block; width: 200px; margin: 20px auto; text-align: center; padding: 10px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-size: 1rem;">
-                More playlists
-            </a>            
-        </div>
-    </section>
 
     <section id="contact" class="contact" style="margin-top: 60px;">
         <div class="container">

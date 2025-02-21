@@ -265,9 +265,9 @@
         
         .video-grid {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping to the next line */
+    flex-wrap: wrap; /* Allows videos to wrap to the next line */
     gap: 20px; /* Space between videos */
-    justify-content: flex-startr; /* Centers videos neatly */
+    justify-content: flex-start; /* Aligns videos to the left */
     align-items: flex-start; /* Keeps alignment consistent */
     padding: 20px;
 }
@@ -276,11 +276,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 320px; /* Fixed width for each video */
+    width: calc(33.33% - 20px); /* Ensures exactly 3 videos per row */
+    max-width: 320px; /* Keeps a fixed max width */
+    box-sizing: border-box;
 }
 
 .video-item iframe {
-    width: 100%; /* Makes sure iframe takes full width of .video-item */
+    width: 100%; /* Ensures iframe takes full width of .video-item */
     height: 180px;
     border-radius: 10px;
 }

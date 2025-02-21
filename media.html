@@ -263,28 +263,28 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Grid layout for videos */
         .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
-            gap: 20px;
-            justify-content: center; /* Ensures videos are aligned properly */
-            align-items: start;
-            padding: 20px;
-        }
-        
-        .video-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 320px; /* Fixed width for consistency */
-        }
-        
-        .video-item iframe {
-            width: 100%; /* Makes sure iframe takes full width of .video-item */
-            height: 180px;
-            border-radius: 10px;
-        }
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    gap: 20px; /* Space between videos */
+    justify-content: center; /* Centers videos neatly */
+    align-items: flex-start; /* Keeps alignment consistent */
+    padding: 20px;
+}
+
+.video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px; /* Fixed width for each video */
+}
+
+.video-item iframe {
+    width: 100%; /* Makes sure iframe takes full width of .video-item */
+    height: 180px;
+    border-radius: 10px;
+}
+
         
         /* Playlist button styling */
         .playlist-button {

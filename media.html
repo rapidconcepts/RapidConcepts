@@ -232,16 +232,6 @@
             padding: 20px;
             overflow-y: auto;
         }
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .video-item iframe {
-            width: 100%;
-            height: 180px;
-            border-radius: 10px;
-        }
         .playlist-container {
             display: flex;
             justify-content: flex-start;
@@ -276,16 +266,22 @@
         /* Grid layout for videos */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
             gap: 20px;
+            justify-content: center; /* Ensures videos are aligned properly */
+            align-items: start;
+            padding: 20px;
         }
+        
         .video-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 320px; /* Fixed width for consistency */
         }
+        
         .video-item iframe {
-            width: 320px;
+            width: 100%; /* Makes sure iframe takes full width of .video-item */
             height: 180px;
             border-radius: 10px;
         }

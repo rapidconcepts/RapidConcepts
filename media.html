@@ -17,26 +17,22 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body.dark-mode {
-            background-color: #121212;
-            color: #fff;
-        }
         .container {
             width: 90%;
             margin: 0 auto;
             max-width: 1200px;
         }
         header {
-            background-color: #000;
-            color: white;
-            padding: 10px 0;
+            background-color: white;
+            color: black;
+            padding: 0px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             width: 100%;
-        }
-        body.dark-mode header {
-            background-color: #1f1f1f;
+            height: 80px;
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
         header .container {
             display: flex;
@@ -76,9 +72,6 @@
             text-align: center;
             padding: 120px 20px;
         }
-        body.dark-mode .hero{
-            background-color: #333;
-        }
         .hero h2 {
             margin: 0 0 10px;
             font-size: 3rem;
@@ -94,13 +87,6 @@
         }
         .btn:hover{
             background-color: #111;
-        }
-        body.dark-mode .btn{
-            background-color: #eee;
-            color: black;
-        }
-        body.dark-mode .btn:hover{
-            background-color: #ccc;
         }
         .about, .videos, .contact {
             padding: 60px 20px;
@@ -154,10 +140,6 @@
             color: #333;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        body.dark-mode .contact {
-            background-color: #222;
-            color: #fff;
         }
         .contact .container {
             max-width: 900px;
@@ -213,27 +195,6 @@
 
         .subscribe-btn:hover {
             background-color: #111;
-        }
-
-        body.dark-mode .subscribe-btn {
-            background-color: #fff;
-            color: #000;
-        }
-
-        body.dark-mode .subscribe-btn:hover {
-            background-color: #ccc;
-        }
-
-
-        body.dark-mode .more-shorts-btn,
-        body.dark-mode .more-playlists-btn {
-            background-color: #eee !important;
-            color: #000 !important;
-        }
-
-        body.dark-mode .more-shorts-btn:hover,
-        body.dark-mode .more-playlists-btn:hover {
-            background-color: #ccc !important;
         }
 
     </style>

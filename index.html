@@ -251,6 +251,44 @@
 }
     </style>
 
+    <style>
+        .video-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.video-thumbnail {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.video-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.video-controls button {
+    padding: 8px 15px;
+    background: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.video-controls button:hover {
+    background: #333;
+}
+
+    </style>
+
 </head>
 <body>
     <header>
@@ -305,7 +343,7 @@
     </section>
     
     <script>
-    const API_KEY = "AIzaSyAIPqka0-CZUoXD7QHjuKg5COYw-mwQ57o"; // Consider securing this
+    const API_KEY = "AIzaSyAIPqka0-CZUoXD7QHjuKg5COYw-mwQ57o"; 
     const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
     const MAX_RESULTS = 6;
     const videoContainer = document.getElementById("video-container");
@@ -321,28 +359,47 @@
             }
 
             videoContainer.innerHTML = ""; // Clear previous content
-            let videosHTML = ""; // Store all HTML in a variable before inserting
 
             data.items.forEach(item => {
-                if (item.id.videoId) {
-                    videosHTML += `
-                        <div class="video-item">
-                            <iframe width="100%" height="220" src="https://www.youtube.com/embed/${item.id.videoId}" allowfullscreen></iframe>
-                            <p>${item.snippet.title}</p>
-                        </div>
-                    `;
-                }
-            });
+                const videoId = item.id.videoId;
+                const videoTitle = item.snippet.title;
+                const thumbnailUrl = item.snippet.thumbnails.medium.url;
 
-            videoContainer.innerHTML = videosHTML; // Insert all at once for better performance
+                const videoElement = `
+                    <div class="video-item">
+                        <img src="${thumbnailUrl}" alt="${videoTitle}" class="video-thumbnail" onclick="playVideo('${videoId}')">
+                        <h3>${videoTitle}</h3>
+                        <div class="video-controls">
+                            <button onclick="playVideo('${videoId}')">▶ Play</button>
+                            <button onclick="openFullscreen('${videoId}')">⛶ Fullscreen</button>
+                        </div>
+                        <div id="player-${videoId}" class="video-frame"></div>
+                    </div>
+                `;
+
+                videoContainer.innerHTML += videoElement;
+            });
         } catch (error) {
             console.error("Error fetching videos:", error);
-            videoContainer.innerHTML = "<p>Failed to load videos. Please try again later.</p>";
+            videoContainer.innerHTML = "<p>Error loading videos.</p>";
         }
+    }
+
+    function playVideo(videoId) {
+        document.getElementById(`player-${videoId}`).innerHTML = `
+            <iframe width="100%" height="220" src="https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1" 
+            frameborder="0" allowfullscreen></iframe>
+        `;
+    }
+
+    function openFullscreen(videoId) {
+        const url = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1`;
+        window.open(url, "_blank");
     }
 
     fetchLatestVideos();
 </script>
+
 
     
 

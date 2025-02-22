@@ -232,6 +232,16 @@
             padding: 20px;
             overflow-y: auto;
         }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .video-item iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+        }
         .playlist-container {
             display: flex;
             justify-content: flex-start;
@@ -263,30 +273,22 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* Grid layout for videos */
         .video-grid {
-    display: flex;
-    flex-wrap: wrap; /* Allows videos to wrap to the next line */
-    gap: 20px; /* Space between videos */
-    justify-content: flex-start; /* Aligns videos to the left */
-    align-items: flex-start; /* Keeps alignment consistent */
-    padding: 20px;
-}
-
-.video-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: calc(33.33% - 20px); /* Ensures exactly 3 videos per row */
-    max-width: 320px; /* Keeps a fixed max width */
-    box-sizing: border-box;
-}
-
-.video-item iframe {
-    width: 100%; /* Ensures iframe takes full width of .video-item */
-    height: 180px;
-    border-radius: 10px;
-}
-
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-item iframe {
+            width: 320px;
+            height: 180px;
+            border-radius: 10px;
+        }
         
         /* Playlist button styling */
         .playlist-button {
@@ -361,7 +363,7 @@
                 <button class="subscribe-btn" onclick="subscribeToYouTube()">Subscribe to YouTube</button>
             </div>
 
-            <div class="social-media" style="justify-content: center;">
+            <div class="social-media">
                 <a href="https://www.youtube.com/@rapidconcepts" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.facebook.com/rapidconcepts07" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/rapidconcepts07" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -434,66 +436,59 @@
     
 
     <script>
-        function showLoading(message) {
-    document.getElementById("content").innerHTML = `
-        <div class="loading-container">
-            <div class="spinner"></div>
-            <h2>${message}</h2>
-        </div>`;
-}
+    const API_KEY = "AIzaSyAIPqka0-CZUoXD7QHjuKg5COYw-mwQ57o";
+    const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
 
-const API_KEY = "AIzaSyAIPqka0-CZUoXD7QHjuKg5COYw-mwQ57o";
-const CHANNEL_ID = "UCMtkjchmnUrbBrbcrk0whmg";
+    async function fetchVideos(pageToken = "") {
+        showLoading("Loading Videoss...");
+        document.getElementById("content").innerHTML = "<h2>Loading Videos...</h2>";
 
-async function fetchVideos(pageToken = "") {
-    showLoading("Loading Videos...");
-    document.getElementById("playlists").style.display = "none"; // Hide playlists
+        try {
+            let videos = [];
+            let nextPageToken = pageToken;
 
-    try {
-        let videos = [];
-        let nextPageToken = pageToken;
+            while (nextPageToken !== undefined) {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet&type=video&maxResults=50&pageToken=${nextPageToken}`);
+                const data = await response.json();
 
-        while (nextPageToken !== undefined) {
-            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet&type=video&maxResults=50&pageToken=${nextPageToken}`);
-            const data = await response.json();
+                videos = videos.concat(data.items);
+                nextPageToken = data.nextPageToken;
+            }
 
-            videos = videos.concat(data.items);
-            nextPageToken = data.nextPageToken;
+            displayVideos(videos);
+        } catch (error) {
+            console.error("Error fetching videos:", error);
+            document.getElementById("content").innerHTML = "<h2>Error Fetching Videos</h2>";
         }
-
-        displayVideos(videos);
-    } catch (error) {
-        console.error("Error fetching videos:", error);
-        document.getElementById("content").innerHTML = "<h2>Error Fetching Videos</h2>";
     }
-}
 
-async function fetchShorts() {
-    showLoading("Loading Shorts...");
-    document.getElementById("playlists").style.display = "none"; // Hide playlists
+    async function fetchShorts() {
+        showLoading("Loading Shorts...");
+        document.getElementById("content").innerHTML = "<h2>Loading Shorts...</h2>";
 
-    try {
-        let videos = [];
-        let nextPageToken = "";
+        try {
+            let videos = [];
+            let nextPageToken = "";
 
-        while (nextPageToken !== undefined) {
-            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet&type=video&videoDuration=short&maxResults=50&pageToken=${nextPageToken}`);
-            const data = await response.json();
+            while (nextPageToken !== undefined) {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet&type=video&videoDuration=short&maxResults=50&pageToken=${nextPageToken}`);
+                const data = await response.json();
 
-            videos = videos.concat(data.items);
-            nextPageToken = data.nextPageToken;
+                videos = videos.concat(data.items);
+                nextPageToken = data.nextPageToken;
+            }
+
+            displayVideos(videos);
+        } catch (error) {
+            console.error("Error fetching shorts:", error);
+            document.getElementById("content").innerHTML = "<h2>Error Fetching Shorts</h2>";
         }
-
-        displayVideos(videos);
-    } catch (error) {
-        console.error("Error fetching shorts:", error);
-        document.getElementById("content").innerHTML = "<h2>Error Fetching Shorts</h2>";
     }
-}
 
+
+// Fetching playlists
 async function fetchPlaylists() {
     showLoading("Loading Playlists...");
-    document.getElementById("playlists").style.display = "block"; // Show playlists
 
     try {
         let playlists = [];
@@ -509,6 +504,7 @@ async function fetchPlaylists() {
 
         displayPlaylists(playlists);
 
+        // Automatically select and fetch the first playlist
         if (playlists.length > 0) {
             fetchPlaylistVideos(playlists[0].id, playlists[0].snippet.title);
             highlightSelectedPlaylist(playlists[0].id);
@@ -519,9 +515,9 @@ async function fetchPlaylists() {
     }
 }
 
+// Fetching playlist videos
 async function fetchPlaylistVideos(playlistId, playlistTitle = "") {
     showLoading(`Loading ${playlistTitle}...`);
-    document.getElementById("playlists").style.display = "block"; // Show playlists
     highlightSelectedPlaylist(playlistId);
 
     try {
@@ -543,6 +539,7 @@ async function fetchPlaylistVideos(playlistId, playlistTitle = "") {
     }
 }
 
+// Function to display videos
 function displayVideos(videos, title = "Videos") {
     let html = `<h2>${title}</h2><div class="video-grid">`;
     videos.forEach(video => {
@@ -560,6 +557,7 @@ function displayVideos(videos, title = "Videos") {
     document.getElementById("content").innerHTML = html;
 }
 
+// Function to display playlists
 function displayPlaylists(playlists) {
     let playlistHtml = '<div class="playlist-container">';
     playlists.forEach(playlist => {
@@ -570,14 +568,14 @@ function displayPlaylists(playlists) {
     document.getElementById("playlists").innerHTML = playlistHtml;
 }
 
+// Function to highlight the selected playlist button
 function highlightSelectedPlaylist(playlistId) {
     document.querySelectorAll(".playlist-button").forEach(button => {
         button.classList.remove("selected");
     });
     document.getElementById(`playlist-${playlistId}`).classList.add("selected");
 }
-
-    </script>
+</script>
 
 </body>
 </html>

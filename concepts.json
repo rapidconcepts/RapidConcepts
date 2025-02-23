@@ -62,11 +62,7 @@
                         {"title": "Workstations:", "text": "High-performance computers used for professional applications such as graphic design, video editing, and scientific computations."},
                         {"title": "Supercomputers:", "text": "Extremely powerful machines designed for complex calculations in fields like weather forecasting, space research, and artificial intelligence."},
                         {"title": "Embedded Systems:", "text": "Small computing units integrated into devices like automobiles, medical equipment, and household appliances to perform dedicated functions."}
-                    ],
-                    "image": {
-                        "src": "https://example.com/images/computer-functions.jpg",
-                        "alt": "Diagram showing the four basic functions of a computer"
-                    }
+                    ]
                 },
                 {
                     "heading": "Importance of Computers in Daily Life",
@@ -77,11 +73,7 @@
                         {"title": "Healthcare:", "text": "Assists in medical research, diagnostics, patient record management, and telemedicine, improving healthcare services."},
                         {"title": "Entertainment:", "text": "Enables gaming, streaming, multimedia production, and social media interactions, shaping modern entertainment industries."},
                         {"title": "Science and Engineering:", "text": "Supports research, simulations, and complex problem-solving in scientific and engineering fields."}
-                    ],
-                    "image": {
-                        "src": "https://example.com/images/computer-functions.jpg",
-                        "alt": "Diagram showing the four basic functions of a computer"
-                    }
+                    ]
                 }
             ],
             "further_reading": [

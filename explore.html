@@ -326,29 +326,31 @@
         </div>
 
         <section id="right-wiki" class="right-wiki">
-            <button onclick="readContent()" id="read-button">Read Aloud</button>
+            <button onclick="readContent()" id="read-button" disabled>Read Aloud</button>
+
             <h2 id="concept-title">Concept Title</h2>
             <div id="concept-content"></div>
             <iframe id="concept-video" width="100%" height="315" src="" allowfullscreen></iframe>
         </section>
 
         <script>
-            function readContent() {
-                let content = document.getElementById("concept-content").innerText;
-        
-                if (content.trim() === "") {
-                    alert("No content available to read.");
-                    return;
-                }
-        
-                let speech = new SpeechSynthesisUtterance(content);
-                speech.lang = "en-US"; // Change to another language if needed
-                speech.rate = 1; // Adjust speed (0.5 = slow, 2 = fast)
-                speech.pitch = 1; // Adjust pitch (0 = low, 2 = high)
-        
-                window.speechSynthesis.speak(speech);
-            }
-        </script>
+    function readContent() {
+        let contentElement = document.getElementById("concept-content");
+
+        if (!contentElement || contentElement.innerText.trim() === "") {
+            alert("No content available to read.");
+            return;
+        }
+
+        let speech = new SpeechSynthesisUtterance(contentElement.innerText);
+        speech.lang = "en-US"; // Change for other languages
+        speech.rate = 1; // Adjust speed (0.5 = slow, 2 = fast)
+        speech.pitch = 1; // Adjust pitch (0 = low, 2 = high)
+
+        window.speechSynthesis.speak(speech);
+    }
+</script>
+
     </div>
         
 
@@ -564,6 +566,8 @@
         console.error("Error loading concept:", error);
         document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
     }
+            document.getElementById("read-button").disabled = false; // Enable button after loading content
+
 }
 
 

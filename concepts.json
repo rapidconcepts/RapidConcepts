@@ -82,9 +82,9 @@
                 {"text": "History of Computers - Computer Hope", "url": "https://www.computerhope.com/issues/ch000984.htm"}
             ],
             "see_also": [
-                {"text": "What is Bitcoin?", "url": "https://edu.gcfglobal.org/en/computerbasics/"},
-                {"text": "What is Blockchain Technology?", "url": "https://www.britannica.com/technology/computer"},
-                {"text": "What is Generative AI?", "url": "https://www.computerhope.com/issues/ch000984.htm"}
+                {"text": "What is Bitcoin?", "concept_key": "What is Bitcoin?"},
+                {"text": "What is Blockchain Technology?", "concept_key": "What is Blockchain Technology?"},
+                {"text": "What is Generative AI?", "concept_key": "What is Generative AI?"}
             ],
             "video": "https://www.youtube.com/embed/RJi2-QtAqTM?si=2E70bs5xkBz-8qZT"
         }

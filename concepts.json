@@ -7,7 +7,7 @@
                     "heading": "",
                     "text": "A computer is an advanced electronic device designed to process and manipulate data efficiently. It operates by executing a set of predefined instructions, enabling it to perform a wide range of tasks. Over the years, computers have evolved into an indispensable part of modern society, facilitating communication, business operations, research, entertainment, and much more. This document explores the fundamental concepts of computers, their components, types, and significance in our daily lives.",
                     "image": {
-                        "src": "https://example.com/images/computer-functions.jpg",
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsComputer1.png?raw=true",
                         "alt": "Diagram showing the four basic functions of a computer"
                     }
                 },
@@ -21,7 +21,7 @@
                         {"title": "Output", "text": "After processing, the results are displayed through output devices such as monitors, printers, or speakers, providing users with the necessary information in a usable format."}
                     ],
                     "image": {
-                        "src": "https://example.com/images/computer-functions.jpg",
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsComputer2.webp?raw=true",
                         "alt": "Diagram showing the four basic functions of a computer"
                     }
                 },
@@ -49,7 +49,7 @@
                         }
                     ],
                     "image": {
-                        "src": "https://example.com/images/computer-components.jpg",
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsComputer3.png?raw=true",
                         "alt": "Diagram of different computer components"
                     }
                 },

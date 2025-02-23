@@ -333,24 +333,25 @@
         </section>
 
         <script>
-    function readContent() {
-        let contentElement = document.getElementById("concept-content");
-        if (!contentElement || contentElement.innerText.trim() === "") {
-            alert("No content available to read.");
-            return;
+            function readContent() {
+            let contentElement = document.getElementById("concept-content");
+        
+            // Ensure content is loaded
+            if (!contentElement || contentElement.innerText.trim() === "") {
+                alert("No content available to read.");
+                return;
+            }
+        
+            let text = contentElement.innerText.trim();
+        
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US"; // Adjust for different languages
+            speech.rate = 1; // Control speed (0.5 = slow, 2 = fast)
+            speech.pitch = 1; // Control pitch (0 = low, 2 = high)
+        
+            window.speechSynthesis.speak(speech);
         }
-
-        let text = contentElement.innerText.trim();
-        let speech = new SpeechSynthesisUtterance(text);
-        speech.lang = "en-US"; // Change language if needed
-        speech.rate = 1; // Adjust speed (0.5 = slow, 2 = fast)
-        speech.pitch = 1; // Adjust pitch (0 = low, 2 = high)
-
-        window.speechSynthesis.speak(speech);
-    }
-</script>
-
-
+        </script>
     </div>
         
 

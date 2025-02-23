@@ -480,11 +480,22 @@
 
             // Image
             if (section.image) {
+                let imageContainer = document.createElement("div");
+                imageContainer.style.display = "flex";
+                imageContainer.style.justifyContent = "center";
+                imageContainer.style.alignItems = "center";
+                imageContainer.style.margin = "20px 0"; // Adds spacing around the image
+            
                 let imageElement = document.createElement("img");
                 imageElement.src = section.image.src;
                 imageElement.alt = section.image.alt;
-                imageElement.style.maxWidth = "100%";
-                sectionElement.appendChild(imageElement);
+                imageElement.style.width = "100%"; // Ensures responsiveness
+                imageElement.style.maxWidth = "600px"; // Restricts maximum size for large screens
+                imageElement.style.height = "auto"; // Maintains aspect ratio
+                imageElement.style.borderRadius = "10px"; // Adds slight rounded corners for better visuals
+            
+                imageContainer.appendChild(imageElement);
+                sectionElement.appendChild(imageContainer);
             }
 
             contentContainer.appendChild(sectionElement);

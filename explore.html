@@ -418,96 +418,59 @@
         }
 
         // 3️⃣ Load concept details from JSON when a video is selected
-        async function loadConcept(conceptKey) {
-    try {
-        const response = await fetch("https://rapidconcepts.github.io/RapidConcepts/concepts.json"); // Replace with actual URL
-        const data = await response.json();
-        const concept = data.concepts[conceptKey];
+        function loadConcept(conceptKey) {
+    const concept = concepts[conceptKey];
 
-        if (concept) {
-            document.getElementById("concept-title").innerText = concept.title;
-            let contentContainer = document.getElementById("concept-content");
-            contentContainer.innerHTML = "";
+    if (!concept) {
+        console.error("Concept not found:", conceptKey);
+        return;
+    }
 
-            // Add structured content
-            concept.content.forEach(section => {
-                let sectionElement = document.createElement("div");
-                sectionElement.innerHTML = `<h3>${section.heading}</h3><p>${section.text}</p>`;
+    // Set title
+    document.getElementById("concept-title").textContent = concept.title;
 
-                // Handle subpoints
-                if (section.subpoints) {
-                    let ul = document.createElement("ul");
-                    section.subpoints.forEach(subpoint => {
-                        let li = document.createElement("li");
-                        li.innerHTML = `<strong>${subpoint.title}:</strong> ${subpoint.text}`;
-                        ul.appendChild(li);
-                    });
-                    sectionElement.appendChild(ul);
-                }
+    // Set content sections
+    const contentContainer = document.getElementById("concept-content");
+    contentContainer.innerHTML = "";
 
-                // Handle subsections
-                if (section.subsections) {
-                    section.subsections.forEach(subsection => {
-                        let subSectionElement = document.createElement("div");
-                        subSectionElement.innerHTML = `<h4>${subsection.subheading}</h4>`;
+    concept.content.forEach(section => {
+        const sectionDiv = document.createElement("div");
+        sectionDiv.classList.add("section");
 
-                        let ul = document.createElement("ul");
-                        subsection.subpoints.forEach(subpoint => {
-                            let li = document.createElement("li");
-                            li.innerHTML = `<strong>${subpoint.title}:</strong> ${subpoint.text}`;
-                            ul.appendChild(li);
-                        });
+        // Add heading
+        const heading = document.createElement("h2");
+        heading.textContent = section.heading;
+        sectionDiv.appendChild(heading);
 
-                        subSectionElement.appendChild(ul);
-                        sectionElement.appendChild(subSectionElement);
-                    });
-                }
+        // Format text (convert **bold** to <strong>bold</strong>)
+        let formattedText = section.text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
-                contentContainer.appendChild(sectionElement);
-            });
+        // Add paragraph with formatted text
+        const paragraph = document.createElement("p");
+        paragraph.innerHTML = formattedText;
+        sectionDiv.appendChild(paragraph);
 
-            // Add related links
-            if (concept.related_links) {
-                let linksSection = document.createElement("div");
-                linksSection.innerHTML = `<h3>Related Links</h3>`;
-                let ul = document.createElement("ul");
-                concept.related_links.forEach(link => {
-                    let li = document.createElement("li");
-                    li.innerHTML = `<a href="${link.url}" target="_blank">${link.text}</a>`;
-                    ul.appendChild(li);
-                });
-                linksSection.appendChild(ul);
-                contentContainer.appendChild(linksSection);
-            }
-
-            // Add see also links
-            if (concept.see_also) {
-                let seeAlsoSection = document.createElement("div");
-                seeAlsoSection.innerHTML = `<h3>See Also</h3>`;
-                let ul = document.createElement("ul");
-                concept.see_also.forEach(link => {
-                    let li = document.createElement("li");
-                    li.innerHTML = `<a href="${link.url}">${link.text}</a>`;
-                    ul.appendChild(li);
-                });
-                seeAlsoSection.appendChild(ul);
-                contentContainer.appendChild(seeAlsoSection);
-            }
-
-            // Set the video at the bottom
-            if (concept.video.includes("youtube.com/embed/")) {
-                document.getElementById("concept-video").src = concept.video;
-            } else {
-                console.error("Invalid YouTube embed URL:", concept.video);
-            }
-        } else {
-            contentContainer.innerHTML = "<p>Concept not found.</p>";
+        // Find corresponding image
+        const imageObj = concept.images.find(img => img.position === section.image);
+        if (imageObj) {
+            const image = document.createElement("img");
+            image.src = imageObj.src;
+            image.alt = imageObj.alt;
+            sectionDiv.appendChild(image);
         }
-    } catch (error) {
-        console.error("Error loading concept:", error);
-        document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
+
+        contentContainer.appendChild(sectionDiv);
+    });
+
+    // Set video if available
+    const videoContainer = document.getElementById("concept-video");
+    if (concept.video && concept.video.includes("youtube.com/embed/")) {
+        videoContainer.innerHTML = `<iframe width="560" height="315" src="${concept.video}" frameborder="0" allowfullscreen></iframe>`;
+    } else {
+        videoContainer.innerHTML = "";
     }
 }
+
 
 
     document.addEventListener("DOMContentLoaded", loadPlaylists);

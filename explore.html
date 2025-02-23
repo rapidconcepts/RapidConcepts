@@ -515,6 +515,26 @@
             contentContainer.appendChild(linksSection);
         }
 
+        // Add See Also Section
+        if (concept.see_also) {
+            let seeAlsoSection = document.createElement("div");
+            seeAlsoSection.innerHTML = `<h3>See Also</h3>`;
+            let ul = document.createElement("ul");
+            concept.see_also.forEach(link => {
+                let li = document.createElement("li");
+                let a = document.createElement("a");
+                a.href = "#"; // Prevents default page reload
+                a.textContent = link.text;
+                a.onclick = function() {
+                    loadConcept(link.concept_key); // Load the new concept dynamically
+                };
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+            seeAlsoSection.appendChild(ul);
+            contentContainer.appendChild(seeAlsoSection);
+        }
+
         // Set video
         if (concept.video.includes("youtube.com/embed/")) {
             document.getElementById("concept-video").src = concept.video;

@@ -81,7 +81,7 @@
                 {"text": "How Computers Work - Britannica", "url": "https://www.britannica.com/technology/computer"},
                 {"text": "History of Computers - Computer Hope", "url": "https://www.computerhope.com/issues/ch000984.htm"}
             ],
-            "See Also": [
+            "see_also": [
                 {"text": "What is Bitcoin?", "url": "https://edu.gcfglobal.org/en/computerbasics/"},
                 {"text": "What is Blockchain Technology?", "url": "https://www.britannica.com/technology/computer"},
                 {"text": "What is Generative AI?", "url": "https://www.computerhope.com/issues/ch000984.htm"}

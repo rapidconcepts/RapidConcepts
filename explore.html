@@ -418,56 +418,102 @@
         }
 
         // 3️⃣ Load concept details from JSON when a video is selected
-        function loadConcept(conceptKey) {
-    const concept = concepts[conceptKey];
+        async function loadConcept(conceptKey) {
+    try {
+        const response = await fetch("concepts.json"); // Ensure correct JSON file path
+        const data = await response.json();
+        const concept = data.concepts[conceptKey];
 
-    if (!concept) {
-        console.error("Concept not found:", conceptKey);
-        return;
-    }
-
-    // Set title
-    document.getElementById("concept-title").textContent = concept.title;
-
-    // Set content sections
-    const contentContainer = document.getElementById("concept-content");
-    contentContainer.innerHTML = "";
-
-    concept.content.forEach(section => {
-        const sectionDiv = document.createElement("div");
-        sectionDiv.classList.add("section");
-
-        // Add heading
-        const heading = document.createElement("h2");
-        heading.textContent = section.heading;
-        sectionDiv.appendChild(heading);
-
-        // Format text (convert **bold** to <strong>bold</strong>)
-        let formattedText = section.text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-
-        // Add paragraph with formatted text
-        const paragraph = document.createElement("p");
-        paragraph.innerHTML = formattedText;
-        sectionDiv.appendChild(paragraph);
-
-        // Find corresponding image
-        const imageObj = concept.images.find(img => img.position === section.image);
-        if (imageObj) {
-            const image = document.createElement("img");
-            image.src = imageObj.src;
-            image.alt = imageObj.alt;
-            sectionDiv.appendChild(image);
+        if (!concept) {
+            document.getElementById("concept-content").innerHTML = "<p>Concept not found.</p>";
+            return;
         }
 
-        contentContainer.appendChild(sectionDiv);
-    });
+        // Set title
+        document.getElementById("concept-title").textContent = concept.title;
 
-    // Set video if available
-    const videoContainer = document.getElementById("concept-video");
-    if (concept.video && concept.video.includes("youtube.com/embed/")) {
-        videoContainer.innerHTML = `<iframe width="560" height="315" src="${concept.video}" frameborder="0" allowfullscreen></iframe>`;
-    } else {
-        videoContainer.innerHTML = "";
+        // Set content
+        const contentContainer = document.getElementById("concept-content");
+        contentContainer.innerHTML = "";
+
+        concept.content.forEach(section => {
+            let sectionElement = document.createElement("div");
+            sectionElement.classList.add("wiki-section");
+
+            // Heading
+            let headingElement = document.createElement("h3");
+            headingElement.textContent = section.heading;
+            sectionElement.appendChild(headingElement);
+
+            // Text
+            let paragraphElement = document.createElement("p");
+            paragraphElement.innerHTML = section.text;
+            sectionElement.appendChild(paragraphElement);
+
+            // Bullet Points
+            if (section.bullet_points) {
+                let ul = document.createElement("ul");
+                section.bullet_points.forEach(point => {
+                    let li = document.createElement("li");
+                    li.innerHTML = `<strong>${point.title}:</strong> ${point.text}`;
+                    ul.appendChild(li);
+                });
+                sectionElement.appendChild(ul);
+            }
+
+            // Subsections
+            if (section.subsections) {
+                section.subsections.forEach(sub => {
+                    let subSectionElement = document.createElement("div");
+                    subSectionElement.innerHTML = `<h4>${sub.subheading}</h4>`;
+
+                    let ul = document.createElement("ul");
+                    sub.bullet_points.forEach(subpoint => {
+                        let li = document.createElement("li");
+                        li.innerHTML = `<strong>${subpoint.title}:</strong> ${subpoint.text}`;
+                        ul.appendChild(li);
+                    });
+
+                    subSectionElement.appendChild(ul);
+                    sectionElement.appendChild(subSectionElement);
+                });
+            }
+
+            // Image
+            if (section.image) {
+                let imageElement = document.createElement("img");
+                imageElement.src = section.image.src;
+                imageElement.alt = section.image.alt;
+                imageElement.style.maxWidth = "100%";
+                sectionElement.appendChild(imageElement);
+            }
+
+            contentContainer.appendChild(sectionElement);
+        });
+
+        // Add Further Reading
+        if (concept.further_reading) {
+            let linksSection = document.createElement("div");
+            linksSection.innerHTML = `<h3>Further Reading</h3>`;
+            let ul = document.createElement("ul");
+            concept.further_reading.forEach(link => {
+                let li = document.createElement("li");
+                li.innerHTML = `<a href="${link.url}" target="_blank">${link.text}</a>`;
+                ul.appendChild(li);
+            });
+            linksSection.appendChild(ul);
+            contentContainer.appendChild(linksSection);
+        }
+
+        // Set video
+        if (concept.video.includes("youtube.com/embed/")) {
+            document.getElementById("concept-video").src = concept.video;
+        } else {
+            console.error("Invalid YouTube embed URL:", concept.video);
+        }
+    } catch (error) {
+        console.error("Error loading concept:", error);
+        document.getElementById("concept-content").innerHTML = "<p>Failed to load content.</p>";
     }
 }
 

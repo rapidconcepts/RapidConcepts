@@ -166,13 +166,11 @@
                     {"text": "History of Atomic Models - Britannica", "url": "https://www.britannica.com/science/atomic-theory"}
                 ],
                 "see_also": [
-                {"text": "What is a Molecule?", "concept_key": "What is a Molecule?"},
-                {"text": "What is Quantum Mechanics?", "concept_key": "What is Quantum Mechanics?"},
-                {"text": "What is Nuclear Energy?", "concept_key": "What is Nuclear Energy?"}
+                    {"text": "What is a Molecule?", "concept_key": "What is a Molecule?"},
+                    {"text": "What is Quantum Mechanics?", "concept_key": "What is Quantum Mechanics?"},
+                    {"text": "What is Nuclear Energy?", "concept_key": "What is Nuclear Energy?"}
                 ],
                 "video": "https://www.youtube.com/embed/zVXu3DyAv5A?si=XYZ123"
-                }
-            }
         }
     }
 }

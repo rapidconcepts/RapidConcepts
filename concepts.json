@@ -87,6 +87,92 @@
                 {"text": "What is Generative AI?", "concept_key": "What is Generative AI?"}
             ],
             "video": "https://www.youtube.com/embed/RJi2-QtAqTM?si=2E70bs5xkBz-8qZT"
+        },
+
+
+
+        
+        "What is an Atom?": {
+            "title": "What is an Atom?",
+            "content": [
+                {
+                    "heading": "",
+                    "text": "An atom is the fundamental building block of matter, forming the basis of all physical substances in the universe. Atoms are incredibly small, consisting of a dense nucleus surrounded by a cloud of electrons. Understanding atoms is crucial for exploring chemistry, physics, and even biology. This document delves into the structure of atoms, their components, types, and significance in science and technology.",
+                    "image": {
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsAtom1.png?raw=true",
+                        "alt": "Diagram showing the structure of an atom"
+                    }
+                },
+                {
+                    "heading": "Definition and Basic Structure",
+                    "text": "An atom is the smallest unit of an element that retains its chemical properties. It consists of three main subatomic particles:",
+                    "bullet_points": [
+                        {"title": "Protons", "text": "Positively charged particles found in the nucleus of an atom. The number of protons defines the atomic number of an element."},
+                        {"title": "Neutrons", "text": "Neutral particles also located in the nucleus. They contribute to the atom's mass but do not affect its charge."},
+                        {"title": "Electrons", "text": "Negatively charged particles that orbit the nucleus in electron shells. They determine an atom’s chemical behavior and bonding properties."}
+                    ],
+                    "image": {
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsAtom2.png?raw=true",
+                        "alt": "Diagram showing subatomic particles in an atom"
+                    }
+                },
+                {
+                    "heading": "Atomic Models",
+                    "text": "Over time, scientists have developed various models to understand atomic structure:",
+                    "subsections": [
+                        {
+                            "subheading": "Dalton’s Atomic Theory",
+                            "bullet_points": [
+                                {"title": "Basic Concept", "text": "John Dalton proposed that atoms are indivisible and indestructible, forming the foundation of elements."},
+                                {"title": "Limitations", "text": "This model did not account for the existence of subatomic particles."}
+                            ]
+                        },
+                {
+                    "subheading": "Bohr’s Model",
+                    "bullet_points": [
+                        {"title": "Energy Levels", "text": "Niels Bohr suggested that electrons orbit the nucleus in fixed energy levels."},
+                        {"title": "Quantum Jumps", "text": "Electrons can jump between energy levels by absorbing or emitting energy."}
+                    ]
+                }
+                ],
+                    "image": {
+                        "src": "https://github.com/rapidconcepts/RapidConcepts/blob/main/Images/whatIsAtom3.png?raw=true",
+                        "alt": "Diagram of Bohr's atomic model"
+                    }
+                },
+                {
+                    "heading": "Types of Atoms",
+                    "text": "Atoms can exist in different forms based on their composition and properties:",
+                    "bullet_points": [
+                        {"title": "Isotopes", "text": "Atoms of the same element with different numbers of neutrons, affecting their atomic mass."},
+                        {"title": "Ions", "text": "Atoms that gain or lose electrons, resulting in a positive or negative charge."},
+                        {"title": "Radioactive Atoms", "text": "Unstable atoms that decay over time, releasing radiation."}
+                    ]
+                },
+                {
+                    "heading": "Significance of Atoms in Science and Technology",
+                    "text": "Atoms play a vital role in numerous scientific and technological advancements:",
+                    "bullet_points": [
+                        {"title": "Chemistry", "text": "Atoms form molecules and compounds through chemical bonding, essential for chemical reactions."},
+                        {"title": "Physics", "text": "Atomic theories help explain fundamental forces, quantum mechanics, and nuclear energy."},
+                        {"title": "Medicine", "text": "Radioactive isotopes are used in medical imaging, cancer treatment, and diagnostic procedures."},
+                        {"title": "Technology", "text": "Atomic structures are key to developing semiconductors, nanotechnology, and advanced materials."}
+                    ]
+                }
+                ],
+                    "further_reading": [
+                    {"text": "Introduction to Atoms - Khan Academy", "url": "https://www.khanacademy.org/science/chemistry/atomic-structure-and-properties"},
+                    {"text": "Atomic Structure - Chem LibreTexts", "url": "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Physical_Chemistry_(McQuarrie_et_al.)/01%3A_Atomic_Theory"},
+                    {"text": "History of Atomic Models - Britannica", "url": "https://www.britannica.com/science/atomic-theory"}
+                ],
+                "see_also": [
+                {"text": "What is a Molecule?", "concept_key": "What is a Molecule?"},
+                {"text": "What is Quantum Mechanics?", "concept_key": "What is Quantum Mechanics?"},
+                {"text": "What is Nuclear Energy?", "concept_key": "What is Nuclear Energy?"}
+                ],
+                "video": "https://www.youtube.com/embed/zVXu3DyAv5A?si=XYZ123"
+                }
+            }
         }
     }
 }

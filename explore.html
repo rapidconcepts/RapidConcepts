@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -250,7 +252,7 @@
 
     <div class="search-container">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="search-content" class="search-input" placeholder="Search concepts..." oninput="searchVideos()">
+        <input type="text" id="search-content" class="search-input" placeholder="Search concepts..." oninput="searchVideos()"><ion-icon name="search-outline"></ion-icon>
         <div id="search-results" class="search-results"></div>
     </div>
 

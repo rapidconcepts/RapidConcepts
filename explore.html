@@ -252,8 +252,54 @@
 
     <div class="search-container">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="search-content" class="search-input" placeholder="Search concepts..." oninput="searchVideos()"><ion-icon name="search-outline"></ion-icon>
+        <input type="text" id="search-content" class="search-input" placeholder="Search concepts..."><ion-icon name="search-outline"></ion-icon>
         <div id="search-results" class="search-results"></div>
+    </div>
+    <div class = "content-boxes">
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
+        <div class = "content-box">
+            <img src =""/>
+            <button><a href = "https://rapidconcepts.github.io/RapidConcepts/concepts/computer.html">What is a Computer?</a></button>
+        </div>
     </div>
 
     <section id="contact" class="contact">
@@ -284,50 +330,6 @@
             <p>&copy; 2024 Rapid Concepts | All Rights Reserved</p>
         </div>
     </footer>
-
-   <script>
-        const conceptsData = {
-            concepts: {
-                "What is a Computer?": "Learn the fundamentals of a computer.",
-                "What is Space?": "Explore the vast universe and its mysteries.",
-                "What is a Black Hole?": "Understand how black holes are formed.",
-                "What is Quantum Mechanics?": "Dive into the world of quantum physics.",
-                "Artificial Intelligence": "Basics of AI and its applications.",
-                "Machine Learning": "Introduction to ML algorithms and concepts."
-            }
-        };
-
-        function searchVideos() {
-            const query = document.getElementById("search-content").value.toLowerCase();
-            const resultsContainer = document.getElementById("search-results");
-            resultsContainer.innerHTML = ""; 
-
-            if (query.trim() === "") {
-                resultsContainer.style.display = "none";
-                return;
-            }
-
-            const matches = Object.keys(conceptsData.concepts).filter(key =>
-                key.toLowerCase().includes(query)
-            );
-
-            if (matches.length === 0) {
-                resultsContainer.innerHTML = "<div class='search-result-item'>No results found</div>";
-            } else {
-                matches.forEach(match => {
-                    let item = document.createElement("div");
-                    item.textContent = match;
-                    item.classList.add("search-result-item");
-                    item.onclick = () => {
-                        document.getElementById("search-content").value = match;
-                        resultsContainer.style.display = "none"; 
-                    };
-                    resultsContainer.appendChild(item);
-                });
-            }
-            resultsContainer.style.display = "block"; 
-        }
-    </script>
 
     <script>
         function subscribeToYouTube() {

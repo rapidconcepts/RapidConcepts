@@ -442,18 +442,16 @@
             link: btn.getAttribute("href")
         }));
 
-        searchInput.addEventListener("input", function () {
-            const query = this.value.toLowerCase();
+        function showResults(query) {
             searchResults.innerHTML = ""; // Clear previous results
 
-            if (query === "") {
-                searchResults.style.display = "none";
-                return;
-            }
+            let filteredConcepts = concepts;
 
-            const filteredConcepts = concepts.filter(concept =>
-                concept.name.toLowerCase().includes(query)
-            );
+            if (query) {
+                filteredConcepts = concepts.filter(concept =>
+                    concept.name.toLowerCase().includes(query.toLowerCase())
+                );
+            }
 
             if (filteredConcepts.length > 0) {
                 searchResults.style.display = "block";
@@ -466,6 +464,16 @@
             } else {
                 searchResults.style.display = "none";
             }
+        }
+
+        // Show all suggestions when input is focused
+        searchInput.addEventListener("focus", function () {
+            showResults("");
+        });
+
+        // Filter suggestions when typing
+        searchInput.addEventListener("input", function () {
+            showResults(this.value);
         });
 
         // Hide results when clicking outside
@@ -476,6 +484,7 @@
         });
     });
 </script>
+
 
     
 </body>

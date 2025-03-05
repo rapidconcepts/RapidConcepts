@@ -430,60 +430,61 @@
     </script>
 
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.getElementById("search-content");
-        const searchResults = document.getElementById("search-results");
-        const buttons = document.querySelectorAll(".content-box button a");
+   <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search-content");
+    const searchResults = document.getElementById("search-results");
+    const buttons = document.querySelectorAll(".content-box button a");
 
-        // Extract button names (concept titles)
-        const concepts = Array.from(buttons).map(btn => ({
-            name: btn.innerText,
-            link: btn.getAttribute("href")
-        }));
+    // Extract button names (concept titles)
+    const concepts = Array.from(buttons).map(btn => ({
+        name: btn.innerText,
+        link: btn.getAttribute("href")
+    }));
 
-        function showResults(query) {
-            searchResults.innerHTML = ""; // Clear previous results
+    function showResults(query) {
+        searchResults.innerHTML = ""; // Clear previous results
 
-            let filteredConcepts = concepts;
+        let filteredConcepts = concepts.filter(concept =>
+            concept.name.toLowerCase().includes(query.toLowerCase())
+        );
 
-            if (query) {
-                filteredConcepts = concepts.filter(concept =>
-                    concept.name.toLowerCase().includes(query.toLowerCase())
-                );
-            }
-
-            if (filteredConcepts.length > 0) {
-                searchResults.style.display = "block";
-                filteredConcepts.forEach(concept => {
-                    const resultItem = document.createElement("div");
-                    resultItem.classList.add("search-result-item");
-                    resultItem.innerHTML = `<a href="${concept.link}">${concept.name}</a>`;
-                    searchResults.appendChild(resultItem);
-                });
-            } else {
-                searchResults.style.display = "none";
-            }
+        if (filteredConcepts.length > 0) {
+            searchResults.style.display = "block";
+            filteredConcepts.forEach(concept => {
+                const resultItem = document.createElement("div");
+                resultItem.classList.add("search-result-item");
+                resultItem.innerHTML = `<a href="${concept.link}">${concept.name}</a>`;
+                searchResults.appendChild(resultItem);
+            });
+        } else {
+            searchResults.style.display = "none";
         }
+    }
 
-        // Show all suggestions when input is focused
-        searchInput.addEventListener("focus", function () {
-            showResults(this.value); // Show filtered results based on existing text
-        });
-
-        // Filter suggestions when typing
-        searchInput.addEventListener("input", function () {
+    // Ensure suggestions show only filtered results when focused
+    searchInput.addEventListener("focus", function () {
+        if (this.value.trim().length > 0) {
             showResults(this.value);
-        });
-
-        // Hide results when clicking outside
-        document.addEventListener("click", function (e) {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = "none";
-            }
-        });
+        } else {
+            searchResults.style.display = "none"; // Don't show all suggestions on focus
+        }
     });
-</script>
+
+    // Filter suggestions when typing
+    searchInput.addEventListener("input", function () {
+        showResults(this.value);
+    });
+
+    // Hide results when clicking outside
+    document.addEventListener("click", function (e) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = "none";
+        }
+    });
+});
+
+   </script>
 
 
     

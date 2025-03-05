@@ -468,7 +468,7 @@
 
         // Show all suggestions when input is focused
         searchInput.addEventListener("focus", function () {
-            showResults("");
+            showResults(this.value); // Show filtered results based on existing text
         });
 
         // Filter suggestions when typing

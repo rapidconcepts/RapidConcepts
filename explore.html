@@ -262,6 +262,36 @@
             text-decoration: none;
             color: white;
         }
+
+        .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-result-item a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.search-result-item:hover {
+    background: #f4f4f4;
+}
+
     </style>
 
 </head>
@@ -398,6 +428,55 @@
             window.open('https://www.youtube.com/@rapidconcepts', '_blank');
         }
     </script>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("search-content");
+        const searchResults = document.getElementById("search-results");
+        const buttons = document.querySelectorAll(".content-box button a");
+
+        // Extract button names (concept titles)
+        const concepts = Array.from(buttons).map(btn => ({
+            name: btn.innerText,
+            link: btn.getAttribute("href")
+        }));
+
+        searchInput.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            searchResults.innerHTML = ""; // Clear previous results
+
+            if (query === "") {
+                searchResults.style.display = "none";
+                return;
+            }
+
+            const filteredConcepts = concepts.filter(concept =>
+                concept.name.toLowerCase().includes(query)
+            );
+
+            if (filteredConcepts.length > 0) {
+                searchResults.style.display = "block";
+                filteredConcepts.forEach(concept => {
+                    const resultItem = document.createElement("div");
+                    resultItem.classList.add("search-result-item");
+                    resultItem.innerHTML = `<a href="${concept.link}">${concept.name}</a>`;
+                    searchResults.appendChild(resultItem);
+                });
+            } else {
+                searchResults.style.display = "none";
+            }
+        });
+
+        // Hide results when clicking outside
+        document.addEventListener("click", function (e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = "none";
+            }
+        });
+    });
+</script>
+
     
 </body>
 </html>
